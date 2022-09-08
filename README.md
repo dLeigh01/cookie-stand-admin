@@ -10,3 +10,4 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 https://github.com/codefellows/seattle-code-python-401d19/tree/main/class-37/demo/expert-eight-ball
 https://tailwindcss.com/docs/installation
+https://github.com/codefellows/seattle-code-python-401d19/tree/main/class-38/demo/expert-eight-ball-2
