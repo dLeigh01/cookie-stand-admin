@@ -1,18 +1,26 @@
-import { loadGetInitialProps } from 'next/dist/shared/lib/utils';
-import Head from 'next/head'
+import Head from 'next/head';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import CreateForm from '../components/CreateForm';
+import ReportTable from '../components/ReportTable';
 import { useState } from 'react';
 
 export default function Home() {
-    const [str, setStr] = useState('{}');
+    const [stands, setStands] = useState('');
 
-    function createCookieStandHandler(event) {
+    function createStandHandler(event) {
         event.preventDefault();
-        stringifyContent(event.target.location.value, parseInt(event.target.min.value), parseInt(event.target.max.value), parseInt(event.target.avg.value));
-        event.target.reset();
-    }
+        const standObj = {
+            id: stands.length + 1,
+            location: event.target.location.value,
+            minCustomers: parseInt(event.target.min.value),
+            maxCustomers: parseInt(event.target.max.value),
+            avgCookies: parseInt(event.target.avg.value),
+            hourlySales: [48, 42, 30, 24, 42, 24, 36, 42, 42, 48, 36, 42, 24, 36]
+        };
 
-    function stringifyContent(location, min, max, avg){
-        setStr(JSON.stringify({location, min, max, avg}))
+        setStands([...stands, standObj]);
+        event.target.reset();
     }
 
     return (
@@ -21,67 +29,11 @@ export default function Home() {
                 <title>Cookie Stand Admin</title>
             </Head>
             <Header />
-            <Main onSubmit={createCookieStandHandler} stringified = {str} />
-            <Footer />
+            <main className='bg-emerald-100 p-8 flex flex-col items-center space-y-8'>
+                <CreateForm onSubmit={createStandHandler}/>
+                <ReportTable stands={stands} />
+            </main>
+            <Footer stands={stands.length}/>
         </div>
     );
-}
-
-function Header() {
-    return (
-    <header className='bg-emerald-500 text-4xl p-4 font-semibold'>
-        <h1>Cookie Stand Admin</h1>
-    </header>
-    );
-}
-
-function Main(props) {
-    return (
-        <main className='bg-emerald-100 p-8 flex flex-col items-center space-y-8'>
-            <CookieStandForm onSubmit={props.onSubmit}/>
-            <ReportTable />
-            <TableDataJSON stringified={props.stringified} />
-        </main>
-    );
-}
-
-function Footer() {
-    return (
-        <footer className='bg-emerald-500 text-lg text-gray-700 p-4 font-semibold'>
-            <p>&copy;2022</p>
-        </footer>
-    );
-}
-
-function CookieStandForm(props) {
-    return (
-        <form onSubmit={props.onSubmit} className='text-center p-4 bg-emerald-300 w-3/5 font-semibold space-y-5 rounded-lg'>
-            <legend className='text-2xl'>Create Cookie Stand</legend>
-            <div className='text-center'>
-                <label className='flex w-full'> Location
-                    <input name='location' type='text' placeholder='Enter location name here...' className='ml-2 w-full'></input>
-                </label>
-            </div>
-            <div className='flex flex-auto space-x-5'>
-                <label className='flex flex-col w-full'> Minimum Customers per Hour
-                    <input name='min' type='text' placeholder='0'></input>
-                </label>
-                <label className='flex flex-col w-full'> Maximum Customers per Hour
-                    <input name='max' type='text' placeholder='0'></input>
-                </label>
-                <label className='flex flex-col w-full'> Average Cookies per Sale
-                    <input name='avg' type='text' placeholder='0'></input>
-                </label>
-                <button type='submit' className='bg-emerald-500 px-24 py-4'>Create</button>
-            </div>
-        </form>
-    );
-}
-
-function ReportTable() {
-    return <p>Report Table Coming Soon...</p>
-}
-
-function TableDataJSON(props) {
-    return <p>{props.stringified}</p>
 }
