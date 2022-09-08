@@ -6,16 +6,21 @@ import ReportTable from '../components/ReportTable';
 import { useState } from 'react';
 
 export default function Home() {
-    const [str, setStr] = useState('{}');
+    const [stands, setStands] = useState('');
 
-    function createCookieStandHandler(event) {
+    function createStandHandler(event) {
         event.preventDefault();
-        stringifyContent(event.target.location.value, parseInt(event.target.min.value), parseInt(event.target.max.value), parseInt(event.target.avg.value));
-        event.target.reset();
-    }
+        const standObj = {
+            id: stands.length + 1,
+            location: event.target.location.value,
+            minCustomers: parseInt(event.target.min.value),
+            maxCustomers: parseInt(event.target.max.value),
+            avgCookies: parseInt(event.target.avg.value),
+            hourlySales: [48, 42, 30, 24, 42, 24, 36, 42, 42, 48, 36, 42, 24, 36]
+        };
 
-    function stringifyContent(location, min, max, avg){
-        setStr(JSON.stringify({location, min, max, avg}))
+        setStands([...stands, standObj]);
+        event.target.reset();
     }
 
     return (
@@ -24,17 +29,11 @@ export default function Home() {
                 <title>Cookie Stand Admin</title>
             </Head>
             <Header />
-            <Main onSubmit={createCookieStandHandler} stringified = {str} />
-            <Footer />
+            <main className='bg-emerald-100 p-8 flex flex-col items-center space-y-8'>
+                <CreateForm onSubmit={createStandHandler}/>
+                <ReportTable stands={stands} />
+            </main>
+            <Footer stands={stands.length}/>
         </div>
-    );
-}
-
-function Main(props) {
-    return (
-        <main className='bg-emerald-100 p-8 flex flex-col items-center space-y-8'>
-            <CreateForm onSubmit={props.onSubmit}/>
-            <ReportTable />
-        </main>
     );
 }
