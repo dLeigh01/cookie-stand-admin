@@ -1,7 +1,6 @@
 export default function CreateForm(props) {
     return (
-        <form onSubmit={props.onSubmit} className='text-center p-4 bg-emerald-300 w-2/3 font-semibold space-y-5 rounded-md'>
-            <legend className='text-2xl'>Create Cookie Stand</legend>
+        <form onSubmit={props.onSubmit} className='text-center p-4 border-2 border-emerald-400 bg-emerald-200 w-5/6 font-semibold space-y-5 rounded-md'>
             <div className='text-center'>
                 <label className='flex w-full'> Location
                     <input name='location' type='text' className='ml-2 w-full'></input>
