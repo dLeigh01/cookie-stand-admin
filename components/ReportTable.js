@@ -13,20 +13,20 @@ export default function ReportTable({stands}) {
                         <th className="border-2 border-emerald-500 text-left px-1">Totals</th>
                     </tr>
                 </thead>
-                <tbody className='border border-gray-600'>
+                <tbody className='border-2 border-emerald-500'>
                     {stands.map(stand => (
                         <tr key={stand.id} className='odd:bg-emerald-200 even:bg-emerald-300 '>
-                            <td className='pl-4 border border-gray-600'>{stand.location}</td>
-                            {stand.hourlySales.map(sales => <td className='text-center border border-gray-600'>{sales}</td>)}
-                            <td className='text-center border border-gray-600'>516</td>
+                            <td className='pl-4 border-2 border-emerald-500 font-bold'>{stand.location}</td>
+                            {stand.hourlySales.map(sales => <td className='text-right px-2 border-2 border-emerald-500'>{sales}</td>)}
+                            <td className='text-right px-2 border-2 border-emerald-500'>516</td>
                         </tr>
                     ))}
                 </tbody>
-                <tfoot className='border border-gray-600'>
-                    <tr className='font-bold text-center border border-gray-600'>
-                        <td>Totals</td>
-                        {stands[0].hourlySales.map(sales => <td className='border border-gray-600'>{sales * stands.length}</td>)}
-                        <td>{516 * stands.length}</td>
+                <tfoot className='border-2 border-emerald-500'>
+                    <tr className='border-2 border-emerald-500'>
+                        <td className="px-1 font-bold">Totals</td>
+                        {stands[0].hourlySales.map(sales => <td className='text-right px-2 border-2 border-emerald-500'>{sales * stands.length}</td>)}
+                        <td className="text-right px-2">{516 * stands.length}</td>
                     </tr>
                 </tfoot>
             </table>
