@@ -5,28 +5,28 @@ export default function ReportTable({stands}) {
         return <h2 className="text-2xl">No Cookie Stands Available</h2>
     } else {
         return (
-            <table className='w-2/3 bg-emerald-500 rounded-md'>
+            <table className='w-5/6 bg-emerald-400 border-2 border-emerald-500'>
                 <thead>
                     <tr>
-                        <th>Location</th>
-                        {hours.map(hour => <th>{hour}</th>)}
-                        <th>Totals</th>
+                        <th className="border-2 border-emerald-500 text-left px-1">Location</th>
+                        {hours.map(hour => <th className="border-2 border-emerald-500 text-left px-1">{hour}</th>)}
+                        <th className="border-2 border-emerald-500 text-left px-1">Totals</th>
                     </tr>
                 </thead>
-                <tbody className='border border-gray-600'>
+                <tbody className='border-2 border-emerald-500'>
                     {stands.map(stand => (
-                        <tr key={stand.id} className='even:bg-emerald-300 odd:bg-emerald-400 '>
-                            <td className='pl-4 border border-gray-600'>{stand.location}</td>
-                            {stand.hourlySales.map(sales => <td className='text-center border border-gray-600'>{sales}</td>)}
-                            <td className='text-center border border-gray-600'>516</td>
+                        <tr key={stand.id} className='odd:bg-emerald-200 even:bg-emerald-300 '>
+                            <td className='pl-4 border-2 border-emerald-500 font-bold'>{stand.location}</td>
+                            {stand.hourlySales.map(sales => <td className='text-right px-2 border-2 border-emerald-500'>{sales}</td>)}
+                            <td className='text-right px-2 border-2 border-emerald-500'>516</td>
                         </tr>
                     ))}
                 </tbody>
-                <tfoot className='border border-gray-600'>
-                    <tr className='font-bold text-center border border-gray-600'>
-                        <td>Totals</td>
-                        {stands[0].hourlySales.map(sales => <td className='border border-gray-600'>{sales * stands.length}</td>)}
-                        <td>{516 * stands.length}</td>
+                <tfoot className='border-2 border-emerald-500'>
+                    <tr className='border-2 border-emerald-500'>
+                        <td className="px-1 font-bold">Totals</td>
+                        {stands[0].hourlySales.map(sales => <td className='text-right px-2 border-2 border-emerald-500'>{sales * stands.length}</td>)}
+                        <td className="text-right px-2">{516 * stands.length}</td>
                     </tr>
                 </tfoot>
             </table>
