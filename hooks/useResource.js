@@ -61,6 +61,7 @@ export default function useResource() {
         logout();
     }
 
+    console.log(data)
     return {
         resources: data,
         error,

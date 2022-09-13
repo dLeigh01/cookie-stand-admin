@@ -42,7 +42,7 @@ export default function Home() {
             {user ? (
                 <main className='bg-emerald-50 p-8 flex flex-col items-center space-y-8'>
                     <CreateForm onSubmit={createStandHandler}/>
-                    <ReportTable stands={stands} />
+                    <ReportTable stands={resources} loading={loading}/>
                 </main>
             ) : (
                 <main>
@@ -50,7 +50,7 @@ export default function Home() {
                 </main>
             )
             }
-            <Footer stands={stands.length}/>
+            <Footer stands={resources ? resources.length : 0}/>
         </div>
     );
 }
