@@ -38,7 +38,7 @@ export default function Home() {
             <Head>
                 <title>Cookie Stand Admin</title>
             </Head>
-            <Header logout={logout}/>
+            <Header logout={logout} user={user}/>
             {user ? (
                 <main className='bg-emerald-50 p-8 flex flex-col items-center space-y-8'>
                     <CreateForm onSubmit={createStandHandler}/>

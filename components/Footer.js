@@ -1,7 +1,7 @@
-export default function Footer(props) {
+export default function Footer({ stands }) {
     return (
         <footer className='bg-emerald-400 text-xl text-gray-700 p-4 font-semibold text-center'>
-            <p>{props.stands} Locations World Wide</p>
+            {stands === 1 ? <p>{stands} Location World Wide</p> : <p>{stands} Locations World Wide</p>}
         </footer>
     );
 }
