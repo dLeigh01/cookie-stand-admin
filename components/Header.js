@@ -8,7 +8,7 @@ export default function Header({ logout, user }) {
                 {user ?
                     // <button
                     <div className='flex flex-row'>
-                        <div className='bg-emerald-100 text-gray-800 px-2.5 py-1.5  mx-2 rounded-md'>{user.id}</div>
+                        <div className='bg-emerald-100 text-gray-800 px-2.5 py-1.5  mx-2 rounded-md'>{user.username}</div>
                         <button onClick={logout} className='bg-emerald-600 text-emerald-100 px-2.5 py-1.5  mx-2 rounded-md'>Sign Out</button>
                     </div>
                     :

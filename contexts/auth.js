@@ -32,7 +32,7 @@ export function AuthProvider(props) {
         const newState = {
             tokens: response.data,
             user: {
-                username: decodedAccess.username,
+                username: username,
                 email: decodedAccess.email,
                 id: decodedAccess.user_id
             },
