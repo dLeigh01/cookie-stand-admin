@@ -19,3 +19,5 @@ https://github.com/codefellows/seattle-code-python-401d19/tree/main/class-38/dem
 ### Links and Resources
 
 https://github.com/codefellows/seattle-code-python-401d19/tree/main/class-39/demo/cookie-stand-demo
+
+[Deployed Site](https://cookie-stand-admin-black.vercel.app/)
